@@ -1,5 +1,6 @@
 <script lang="ts">
 	import Headline from '$lib/Headline/Headline.svelte';
+	import PageWithNavigation from '$lib/PageWithNavigation/PageWithNavigation.svelte';
 	import { Html5Qrcode } from 'html5-qrcode';
 	import { onMount } from 'svelte';
 	import { writable } from 'svelte/store';
@@ -38,7 +39,6 @@
 					return 1;
 				});
 				restoredData = results.reduce((acc, [prefix, data]) => acc + data, '');
-				console.log({ restoredData });
 			}
 		};
 		const config = { fps: 500, qrbox: { width: 250, height: 250 } };
@@ -67,23 +67,25 @@
 	}
 </script>
 
-<div id="reader" />
+<PageWithNavigation>
+	<div id="reader" />
 
-{#if state === 'ERROR'}
-	<Headline>Error scanning!</Headline>
-	<p>{error}</p>
-{:else if state === 'SCANNING'}
-	<div>Scanned QR data:</div>
+	{#if state === 'ERROR'}
+		<Headline>Error scanning!</Headline>
+		<p>{error}</p>
+	{:else if state === 'SCANNING'}
+		<div>Scanned QR data:</div>
 
-	<ul>
-		{#each Object.entries($qrcodesData) as [key, value]}
-			<li>{key}: {value}</li>
-		{/each}
-	</ul>
-	<button on:click={onStopClick}>Stop scanning!</button>
-{:else if state === 'RESULT'}
-	<Headline>Successfully scanned all QR codes!</Headline>
-	<textarea bind:value={restoredData} />
-{:else}
-	<button on:click={onStartClick}>Start scanning!</button>
-{/if}
+		<ul>
+			{#each Object.entries($qrcodesData) as [key, value]}
+				<li>{key}: {value}</li>
+			{/each}
+		</ul>
+		<button on:click={onStopClick}>Stop scanning!</button>
+	{:else if state === 'RESULT'}
+		<Headline>Successfully scanned all QR codes!</Headline>
+		<textarea bind:value={restoredData} />
+	{:else}
+		<button on:click={onStartClick}>Start scanning!</button>
+	{/if}
+</PageWithNavigation>

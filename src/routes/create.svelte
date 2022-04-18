@@ -1,4 +1,5 @@
 <script lang="ts">
+	import PageWithNavigation from '$lib/PageWithNavigation/PageWithNavigation.svelte';
 	import Qrcode from '$lib/Qrcode/Qrcode.svelte';
 
 	let data: string;
@@ -50,23 +51,25 @@
 	}
 </script>
 
-<h1>Create magic QR codes</h1>
-<p>This is where we can create QR codes.</p>
+<PageWithNavigation>
+	<h1>Create magic QR codes</h1>
+	<p>This is where we can create QR codes.</p>
 
-<p>Put your data in here:</p>
-<textarea bind:value={data} />
+	<p>Put your data in here:</p>
+	<textarea bind:value={data} />
 
-{#if error}
-	<p>Error!</p>
-	<p>{error}</p>
-{:else}
-	<p>The chunks are:</p>
-	<div>
-		{#each chunks as chunk}
-			<Qrcode value={chunk} />
-		{/each}
-	</div>
-{/if}
+	{#if error}
+		<p>Error!</p>
+		<p>{error}</p>
+	{:else}
+		<p>The chunks are:</p>
+		<div>
+			{#each chunks as chunk}
+				<Qrcode value={chunk} />
+			{/each}
+		</div>
+	{/if}
+</PageWithNavigation>
 
 <style>
 	div {
