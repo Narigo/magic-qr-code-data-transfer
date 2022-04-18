@@ -1,0 +1,170 @@
+name: Run checks
+
+on: pull_request
+
+jobs:
+  npm-install:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout 🛎️
+        uses: actions/checkout@v2.3.1
+
+      - name: Use cache for npm 🎁
+        id: cache-npm
+        uses: actions/cache@v2
+        with:
+          path: |
+            ~/.npm
+          key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-npm-
+
+      - name: Install npm packages 📦
+        run: |
+          npm ci
+
+  checks:
+    runs-on: ubuntu-latest
+    needs: [npm-install]
+    steps:
+      - name: Checkout 🛎️
+        uses: actions/checkout@v2.3.1
+
+      - name: Use cache for npm 🎁
+        id: cache-npm
+        uses: actions/cache@v2
+        with:
+          path: |
+            ~/.npm
+          key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-npm-
+
+      - name: Install npm packages 📦
+        run: |
+          npm ci
+
+      - name: Run svelte-check 🔬
+        run: |
+          npm run check
+
+      - name: Run linter 🕵️
+        run: |
+          npm run lint
+
+      - name: Run unit tests 🧪
+        run: |
+          npm run test:unit -- --coverage
+
+  integration-install:
+    runs-on: ubuntu-latest
+    needs: [npm-install]
+    steps:
+      - name: Checkout 🛎️
+        uses: actions/checkout@v2.3.1
+
+      - name: Use cache for npm 🎁
+        id: cache-npm
+        uses: actions/cache@v2
+        with:
+          path: |
+            ~/.npm
+          key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-npm-
+
+      - name: Install npm packages 📦
+        run: |
+          npm ci
+
+      - name: Use cache for Playwright 🎁
+        id: cache-playwright
+        uses: actions/cache@v2
+        with:
+          path: ~/.cache/ms-playwright
+          key: ${{ runner.os }}-playwright-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-playwright-
+
+      - name: Install Playwright packages 📦
+        if: steps.cache-playwright.outputs.cache-hit != 'true'
+        run: |
+          npx playwright install --with-deps
+
+  integration-app:
+    runs-on: ubuntu-latest
+    needs: [integration-install]
+    steps:
+      - name: Checkout 🛎️
+        uses: actions/checkout@v2.3.1
+
+      - name: Use cache for npm 🎁
+        id: cache-npm
+        uses: actions/cache@v2
+        with:
+          path: |
+            ~/.npm
+          key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-npm-
+
+      - name: Install npm packages 📦
+        run: |
+          npm ci
+
+      - name: Use cache for Playwright 🎁
+        id: cache-playwright
+        uses: actions/cache@v2
+        with:
+          path: ~/.cache/ms-playwright
+          key: ${{ runner.os }}-playwright-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-playwright-
+
+      - name: Install Playwright packages 📦
+        if: steps.cache-playwright.outputs.cache-hit != 'true'
+        run: |
+          npx playwright install --with-deps
+
+      - name: Run integration tests 🏘
+        run: |
+          npm run ci:test:integration
+
+  integration-storybook:
+    runs-on: ubuntu-latest
+    needs: [integration-install]
+    steps:
+      - name: Checkout 🛎️
+        uses: actions/checkout@v2.3.1
+
+      - name: Use cache for npm 🎁
+        id: cache-npm
+        uses: actions/cache@v2
+        with:
+          path: |
+            ~/.npm
+          key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-npm-
+
+      - name: Install npm packages 📦
+        run: |
+          npm ci
+
+      - name: Use cache for Playwright 🎁
+        id: cache-playwright
+        uses: actions/cache@v2
+        with:
+          path: ~/.cache/ms-playwright
+          key: ${{ runner.os }}-playwright-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-playwright-
+
+      - name: Install Playwright packages 📦
+        if: steps.cache-playwright.outputs.cache-hit != 'true'
+        run: |
+          npx playwright install --with-deps
+
+      - name: Run component tests 🏠
+        run: |
+          npm run ci:test:storybook

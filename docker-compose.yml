@@ -1,0 +1,18 @@
+version: '3.8'
+
+volumes:
+  node-cache:
+  npm-cache:
+
+services:
+  app:
+    image: node:16
+    working_dir: /app
+    ports:
+      - '3000:3000'
+      - '3001:3001'
+      - '6006:6006'
+    volumes:
+      - .:/app
+      - node-cache:/root/.cache
+      - npm-cache:/root/.npm
