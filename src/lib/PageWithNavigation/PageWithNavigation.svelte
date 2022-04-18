@@ -2,7 +2,7 @@
 	<nav>
 		<ul>
 			<li><a href="/create">Send data</a></li>
-			<li><a href="/read">Retrieve data</a></li>
+			<li><a href="/read">Receive data</a></li>
 		</ul>
 	</nav>
 
