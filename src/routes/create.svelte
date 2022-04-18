@@ -36,9 +36,10 @@
 			};
 		}
 		const chunks = [];
+		const lastIndex = howManyParts - 1;
 		for (let i = 0; i < howManyParts; i++) {
 			const partOfData = data.substring(i * maxChunkLength, (i + 1) * maxChunkLength);
-			const prefix = `MQR${paddedNumber(i)}.${paddedNumber(howManyParts)}.`;
+			const prefix = `MQR${paddedNumber(i)}.${paddedNumber(lastIndex)}.`;
 			chunks.push(prefix + partOfData);
 		}
 		return { value: chunks };
@@ -60,7 +61,18 @@
 	<p>{error}</p>
 {:else}
 	<p>The chunks are:</p>
-	{#each chunks as chunk}
-		<Qrcode value={chunk} />
-	{/each}
+	<div>
+		{#each chunks as chunk}
+			<Qrcode value={chunk} />
+		{/each}
+	</div>
 {/if}
+
+<style>
+	div {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 2em;
+		justify-content: space-between;
+	}
+</style>
