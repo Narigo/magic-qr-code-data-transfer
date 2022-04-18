@@ -1,26 +1,29 @@
 {
   ".svelte-kit/runtime/client/start.js": {
-    "file": "start-dcb5013c.js",
+    "file": "start-6fe31538.js",
     "src": ".svelte-kit/runtime/client/start.js",
     "isEntry": true,
     "imports": [
       "_vendor-a0cacfa4.js"
     ],
     "dynamicImports": [
-      ".svelte-kit/runtime/components/layout.svelte",
+      "src/routes/__layout.svelte",
       ".svelte-kit/runtime/components/error.svelte",
       "src/routes/index.svelte",
       "src/routes/create.svelte",
       "src/routes/read.svelte"
     ]
   },
-  ".svelte-kit/runtime/components/layout.svelte": {
-    "file": "layout.svelte-76d2175a.js",
-    "src": ".svelte-kit/runtime/components/layout.svelte",
+  "src/routes/__layout.svelte": {
+    "file": "pages/__layout.svelte-98fab9cf.js",
+    "src": "src/routes/__layout.svelte",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
       "_vendor-a0cacfa4.js"
+    ],
+    "css": [
+      "assets/pages/__layout.svelte-f4934df0.css"
     ]
   },
   ".svelte-kit/runtime/components/error.svelte": {
@@ -33,35 +36,38 @@
     ]
   },
   "src/routes/index.svelte": {
-    "file": "pages/index.svelte-3569b31b.js",
+    "file": "pages/index.svelte-79542346.js",
     "src": "src/routes/index.svelte",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
       "_vendor-a0cacfa4.js",
-      "_Headline-080cdd27.js"
+      "_Headline-080cdd27.js",
+      "_PageWithNavigation-5566e3d8.js"
     ]
   },
   "src/routes/create.svelte": {
-    "file": "pages/create.svelte-27c6ce15.js",
+    "file": "pages/create.svelte-e75adbe4.js",
     "src": "src/routes/create.svelte",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
-      "_vendor-a0cacfa4.js"
+      "_vendor-a0cacfa4.js",
+      "_PageWithNavigation-5566e3d8.js"
     ],
     "css": [
       "assets/pages/create.svelte-8489bad7.css"
     ]
   },
   "src/routes/read.svelte": {
-    "file": "pages/read.svelte-93685e56.js",
+    "file": "pages/read.svelte-40aed44f.js",
     "src": "src/routes/read.svelte",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
       "_vendor-a0cacfa4.js",
-      "_Headline-080cdd27.js"
+      "_Headline-080cdd27.js",
+      "_PageWithNavigation-5566e3d8.js"
     ]
   },
   "_vendor-a0cacfa4.js": {
@@ -74,6 +80,15 @@
     ],
     "css": [
       "assets/Headline-9f44be58.css"
+    ]
+  },
+  "_PageWithNavigation-5566e3d8.js": {
+    "file": "chunks/PageWithNavigation-5566e3d8.js",
+    "imports": [
+      "_vendor-a0cacfa4.js"
+    ],
+    "css": [
+      "assets/PageWithNavigation-938c6aa6.css"
     ]
   }
 }

@@ -5,38 +5,45 @@
 		<link rel="icon" href="/favicon.png" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta http-equiv="content-security-policy" content="">
+	<link rel="stylesheet" href="/_app/assets/pages/__layout.svelte-f4934df0.css">
 	<link rel="stylesheet" href="/_app/assets/Headline-9f44be58.css">
-	<link rel="modulepreload" href="/_app/start-dcb5013c.js">
+	<link rel="stylesheet" href="/_app/assets/PageWithNavigation-938c6aa6.css">
+	<link rel="modulepreload" href="/_app/start-6fe31538.js">
 	<link rel="modulepreload" href="/_app/chunks/vendor-a0cacfa4.js">
-	<link rel="modulepreload" href="/_app/layout.svelte-76d2175a.js">
-	<link rel="modulepreload" href="/_app/pages/index.svelte-3569b31b.js">
+	<link rel="modulepreload" href="/_app/pages/__layout.svelte-98fab9cf.js">
+	<link rel="modulepreload" href="/_app/pages/index.svelte-79542346.js">
 	<link rel="modulepreload" href="/_app/chunks/Headline-080cdd27.js">
+	<link rel="modulepreload" href="/_app/chunks/PageWithNavigation-5566e3d8.js">
 	</head>
 	<body>
 		<div id="svelte">
 
 
-<h2 class="svelte-1paot4z">Magic QR Code data transfer</h2>
-<p>It works without a server!</p>
+<div class="svelte-1rw2qzp"><nav class="svelte-1rw2qzp"><ul class="svelte-1rw2qzp"><li class="svelte-1rw2qzp"><a href="/create" class="svelte-1rw2qzp">Send data</a></li>
+			<li class="svelte-1rw2qzp"><a href="/read" class="svelte-1rw2qzp">Retrieve data</a></li></ul></nav>
 
-<h2>How will it work?</h2>
-<p>To send data:</p>
-<ol><li>You enter your data in a big text area</li>
-	<li>It splits the text into multiple chunks that can be put into individual QR codes (QR codes can
-		only be of length X-bytes)
-	</li>
-	<li>It creates individual QR codes based of the chunks, having something like <code>MQR&lt;index&gt;.&lt;length&gt;.&lt;data-of-chunk&gt;</code></li></ol>
-<p>On the receiver:</p>
-<ol><li>There is a reader to use the webcam and shows you which QR codes were scanned until you have all
-		of them scanned completely
-	</li>
-	<li>It shows the whole data in a big text area at the receiver</li></ol>
+	<main class="svelte-1rw2qzp"><h2 class="svelte-1paot4z">Magic QR Code data transfer</h2>
+	<p>It works without a server!</p>
+
+	<h2>How will it work?</h2>
+	<p>To send data:</p>
+	<ol><li>You enter your data in a big text area</li>
+		<li>It splits the text into multiple chunks that can be put into individual QR codes (QR codes can
+			only be of length X-bytes)
+		</li>
+		<li>It creates individual QR codes based of the chunks, having something like <code>MQR&lt;index&gt;.&lt;length&gt;.&lt;data-of-chunk&gt;</code></li></ol>
+	<p>On the receiver:</p>
+	<ol><li>There is a reader to use the webcam and shows you which QR codes were scanned until you have
+			all of them scanned completely
+		</li>
+		<li>It shows the whole data in a big text area at the receiver</li></ol></main>
+</div>
 
 
-		<script type="module" data-hydrate="a4szu3">
-		import { start } from "/_app/start-dcb5013c.js";
+		<script type="module" data-hydrate="1je8h3a">
+		import { start } from "/_app/start-6fe31538.js";
 		start({
-			target: document.querySelector('[data-hydrate="a4szu3"]').parentNode,
+			target: document.querySelector('[data-hydrate="1je8h3a"]').parentNode,
 			paths: {"base":"","assets":""},
 			session: {},
 			route: true,
@@ -46,8 +53,8 @@
 				status: 200,
 				error: null,
 				nodes: [
-					import("/_app/layout.svelte-76d2175a.js"),
-						import("/_app/pages/index.svelte-3569b31b.js")
+					import("/_app/pages/__layout.svelte-98fab9cf.js"),
+						import("/_app/pages/index.svelte-79542346.js")
 				],
 				params: {},
 				routeId: ""
