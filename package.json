@@ -60,6 +60,7 @@
 		"jest-environment-jsdom": "^27.5.1",
 		"prettier": "^2.6.1",
 		"prettier-plugin-svelte": "^2.6.0",
+		"qrcode": "^1.5.0",
 		"start-server-and-test": "^1.14.0",
 		"storybook-builder-vite": "^0.1.21",
 		"svelte": "^3.46.4",
