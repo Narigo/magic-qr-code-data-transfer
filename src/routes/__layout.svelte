@@ -6,4 +6,7 @@
 		margin: 0;
 		padding: 0;
 	}
+	:global(*) {
+		box-sizing: border-box;
+	}
 </style>

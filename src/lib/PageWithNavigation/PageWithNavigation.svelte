@@ -9,6 +9,8 @@
 	<main>
 		<slot />
 	</main>
+
+	<footer>(c) 2022 Jörn Bernhardt</footer>
 </div>
 
 <style>
@@ -16,10 +18,12 @@
 		display: flex;
 		flex-direction: column;
 		gap: 2em;
+		height: 100%;
 	}
 
 	main {
-		padding: 0 2em 2em;
+		flex-grow: 1;
+		padding: 0 2em;
 	}
 
 	nav {
@@ -40,6 +44,14 @@
 	}
 	a {
 		display: block;
+		padding: 1em;
+	}
+
+	footer {
+		background-color: #333;
+		color: #fff;
+		display: flex;
+		justify-content: center;
 		padding: 1em;
 	}
 </style>
