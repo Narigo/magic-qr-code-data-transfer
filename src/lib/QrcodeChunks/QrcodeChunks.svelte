@@ -1,5 +1,4 @@
 <script lang="ts">
-	import Qrcode from '$lib/Qrcode/Qrcode.svelte';
 	import { maxChunkLength } from './constants';
 
 	export let data: string;
@@ -47,20 +46,7 @@
 </script>
 
 {#if error === 'MAX_CHUNK_LENGTH_EXCEEDED'}
-	<slot name="error" />
+	<slot name="ERROR_MAX_CHUNK_LENGTH_EXCEEDED" {maxChunkLength} />
 {:else}
-	<div>
-		{#each chunks as chunk}
-			<Qrcode value={chunk} />
-		{/each}
-	</div>
+	<slot {chunks} />
 {/if}
-
-<style>
-	div {
-		display: flex;
-		flex-wrap: wrap;
-		gap: 2em;
-		justify-content: space-between;
-	}
-</style>

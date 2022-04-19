@@ -12,7 +12,4 @@
 	}
 </script>
 
-<div>
-	<canvas bind:this={canvas} />
-	<div>{value}</div>
-</div>
+<canvas bind:this={canvas} />

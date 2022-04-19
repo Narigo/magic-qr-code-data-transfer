@@ -1,6 +1,6 @@
 <script lang="ts">
 	import PageWithNavigation from '$lib/PageWithNavigation/PageWithNavigation.svelte';
-	import { maxChunkLength } from '$lib/QrcodeChunks/constants';
+	import Qrcode from '$lib/Qrcode/Qrcode.svelte';
 	import QrcodeChunks from '$lib/QrcodeChunks/QrcodeChunks.svelte';
 
 	let data: string;
@@ -19,11 +19,38 @@
 		<p>{error}</p>
 	{:else}
 		<p>The chunks are:</p>
-		<QrcodeChunks {data}>
-			<div slot="error">
+		<QrcodeChunks {data} let:chunks>
+			<div slot="ERROR_MAX_CHUNK_LENGTH_EXCEEDED" let:maxChunkLength>
 				We don't want to create more than 100 QR codes for this (max byte length = {maxChunkLength *
 					100})
+			</div>
+
+			<div class="qrcodes">
+				{#each chunks as chunk, index}
+					<div class="qrcode">
+						<Qrcode value={chunk} />
+						<div>{index + 1}</div>
+					</div>
+				{/each}
 			</div>
 		</QrcodeChunks>
 	{/if}
 </PageWithNavigation>
+
+<style>
+	.qrcodes {
+		align-items: center;
+		display: flex;
+		flex-wrap: wrap;
+		gap: 2em;
+		justify-content: space-between;
+	}
+
+	.qrcode {
+		align-items: center;
+		box-shadow: 0 0 15px -10px #333;
+		display: flex;
+		flex-direction: column;
+		padding-bottom: 1em;
+	}
+</style>
