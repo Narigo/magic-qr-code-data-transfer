@@ -1,8 +1,10 @@
 <script lang="ts">
 	import Headline from '$lib/Headline/Headline.svelte';
 	import PageWithNavigation from '$lib/PageWithNavigation/PageWithNavigation.svelte';
+	import Qrcode from '$lib/Qrcode/Qrcode.svelte';
 	import { Html5Qrcode } from 'html5-qrcode';
 	import { onMount } from 'svelte';
+	import { element } from 'svelte/internal';
 	import { writable } from 'svelte/store';
 
 	let state: 'ERROR' | 'SCANNING' | 'STOPPED' | 'RESULT' = 'STOPPED';
@@ -73,6 +75,14 @@
 			error = err.message;
 		}
 	}
+
+	async function onResetClick() {
+		$qrcodesData = {};
+	}
+
+	function nf(n: number): string {
+		return `${n}`.padStart(2, '0');
+	}
 </script>
 
 <PageWithNavigation>
@@ -82,11 +92,25 @@
 		<Headline>Error scanning!</Headline>
 		<p>{error}</p>
 	{:else if state === 'SCANNING'}
-		<div>Scanned QR data:</div>
+		<div class="progressBar">
+			<div class="progress" style={`width: ${(100 * scannedQrcodes) / totalQrcodesToScan}%;`} />
+		</div>
+		<div class="progressText">
+			{scannedQrcodes} of {totalQrcodesToScan} QR codes scanned.
+		</div>
 
-		<ul>
-			{#each Object.entries($qrcodesData) as [key, value]}
-				<li>{key}: {value}</li>
+		<ul class="qrcodes">
+			{#each new Array(totalQrcodesToScan).fill(1).map((_, index) => {
+				return { index, chunk: $qrcodesData[`MQR${nf(index)}.${nf(totalQrcodesToScan - 1)}`] };
+			}) as element}
+				<li class="qrcode" class:scanned={!!element.chunk}>
+					{#if element.chunk}
+						<Qrcode value={element.chunk} />
+					{:else}
+						<Qrcode value="..." />
+					{/if}
+					<div>{element.index + 1}</div>
+				</li>
 			{/each}
 		</ul>
 		<button on:click={onStopClick}>Stop scanning!</button>
@@ -95,5 +119,42 @@
 		<textarea bind:value={restoredData} />
 	{:else}
 		<button on:click={onStartClick}>Start scanning!</button>
+		<button on:click={onResetClick}>Reset scanning</button>
 	{/if}
 </PageWithNavigation>
+
+<style>
+	.progressBar {
+		background-color: rgba(50, 200, 50, 0.1);
+		height: 10px;
+	}
+
+	.progress {
+		background-color: rgba(50, 200, 50, 1);
+		height: 100%;
+	}
+
+	.progressText {
+		text-align: right;
+	}
+
+	.qrcodes {
+		align-items: center;
+		display: flex;
+		flex-wrap: wrap;
+		gap: 2em;
+		justify-content: space-between;
+	}
+
+	.qrcode {
+		align-items: center;
+		box-shadow: 0 0 15px -10px #333;
+		display: flex;
+		flex-direction: column;
+		padding-bottom: 1em;
+	}
+
+	.scanned {
+		background-color: lime;
+	}
+</style>

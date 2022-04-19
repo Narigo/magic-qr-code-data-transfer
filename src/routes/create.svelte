@@ -25,14 +25,14 @@
 					100})
 			</div>
 
-			<div class="qrcodes">
+			<ul class="qrcodes">
 				{#each chunks as chunk, index}
-					<div class="qrcode">
+					<li class="qrcode">
 						<Qrcode value={chunk} />
 						<div>{index + 1}</div>
-					</div>
+					</li>
 				{/each}
-			</div>
+			</ul>
 		</QrcodeChunks>
 	{/if}
 </PageWithNavigation>
