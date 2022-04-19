@@ -38,13 +38,21 @@
 					}
 					return 1;
 				});
-				restoredData = results.reduce((acc, [prefix, data]) => acc + data, '');
+				restoredData = results.reduce((acc, [_prefix, data]) => acc + data, '');
 			}
+		};
+		const qrCodeErrorCallback = (error) => {
+			console.error(error);
 		};
 		const config = { fps: 500, qrbox: { width: 250, height: 250 } };
 
 		try {
-			await html5QrcodeScanner.start({ facingMode: 'environment' }, config, qrCodeSuccessCallback);
+			await html5QrcodeScanner.start(
+				{ facingMode: 'environment' },
+				config,
+				qrCodeSuccessCallback,
+				qrCodeErrorCallback
+			);
 			state = 'SCANNING';
 		} catch (err) {
 			console.error(err);
