@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Button from '$lib/Button/Button.svelte';
 	import Headline from '$lib/Headline/Headline.svelte';
 	import PageWithNavigation from '$lib/PageWithNavigation/PageWithNavigation.svelte';
 	import Qrcode from '$lib/Qrcode/Qrcode.svelte';
@@ -123,13 +124,13 @@
 				</li>
 			{/each}
 		</ul>
-		<button on:click={onStopClick}>Stop scanning!</button>
+		<Button on:click={onStopClick}>Stop scanning!</Button>
 	{:else if state === 'RESULT'}
 		<Headline>Successfully scanned all QR codes!</Headline>
 		<textarea bind:value={restoredData} />
 	{:else}
-		<button on:click={onStartClick}>Start scanning!</button>
-		<button on:click={onResetClick}>Reset scanning</button>
+		<Button on:click={onStartClick}>Start scanning!</Button>
+		<Button on:click={onResetClick}>Reset scanning</Button>
 	{/if}
 </PageWithNavigation>
 
