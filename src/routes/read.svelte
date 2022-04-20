@@ -4,7 +4,6 @@
 	import Qrcode from '$lib/Qrcode/Qrcode.svelte';
 	import { Html5Qrcode } from 'html5-qrcode';
 	import { onMount } from 'svelte';
-	import { element } from 'svelte/internal';
 	import { writable } from 'svelte/store';
 
 	let state: 'ERROR' | 'SCANNING' | 'STOPPED' | 'RESULT' = 'STOPPED';
@@ -26,10 +25,21 @@
 			const prefixLength = `MQR00.00.`.length;
 			const prefix = decodedText.substring(0, prefixLength - 1);
 			const data = decodedText.substring(prefixLength);
-			$qrcodesData[prefix] = data;
 			const lastIndexOfQrcodes = prefix.slice(-2);
-			totalQrcodesToScan = parseInt(lastIndexOfQrcodes, 10) + 1;
+			const parsedTotalQrcodesToScan = parseInt(lastIndexOfQrcodes, 10) + 1;
+
+			// Reset existing data if length of QR codes has changed. This may
+			// happen if a user changes the data after reading started.
+			if (totalQrcodesToScan !== parsedTotalQrcodesToScan) {
+				$qrcodesData = {};
+				totalQrcodesToScan = parsedTotalQrcodesToScan;
+			}
+
+			// Save the found data
+			$qrcodesData[prefix] = data;
 			scannedQrcodes = Object.keys($qrcodesData).length;
+
+			// When user scanned all QR codes according to prefix
 			if (scannedQrcodes === totalQrcodesToScan) {
 				await stopScanning();
 				state = 'RESULT';
