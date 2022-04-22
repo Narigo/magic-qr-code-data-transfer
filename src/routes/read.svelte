@@ -11,11 +11,10 @@
 	import Headline from '$lib/Headline/Headline.svelte';
 	import PageWithNavigation from '$lib/PageWithNavigation/PageWithNavigation.svelte';
 	import Qrcode from '$lib/Qrcode/Qrcode.svelte';
+	import SuccessView from '$lib/SuccessView/SuccessView.svelte';
+	import Textarea from '$lib/Textarea/Textarea.svelte';
 	import { Html5Qrcode } from 'html5-qrcode';
-	import type {
-		Html5QrcodeCameraScanConfig,
-		Html5QrcodeConfigs
-	} from 'html5-qrcode/esm/html5-qrcode';
+	import type { Html5QrcodeCameraScanConfig } from 'html5-qrcode/esm/html5-qrcode';
 	import { onMount } from 'svelte';
 	import { writable } from 'svelte/store';
 
@@ -36,7 +35,7 @@
 	});
 
 	async function onStartClick() {
-		const qrCodeSuccessCallback = async (decodedText: string, decodedResult) => {
+		const qrCodeSuccessCallback = async (decodedText: string) => {
 			const prefixLength = `MQR00.00.`.length;
 			const prefix = decodedText.substring(0, prefixLength - 1);
 			const data = decodedText.substring(prefixLength);
@@ -68,10 +67,9 @@
 				restoredData = results.reduce((acc, [_prefix, data]) => acc + data, '');
 			}
 		};
-		const qrCodeErrorCallback = () => {};
+		const qrCodeErrorCallback = (_message, _error) => {};
 		const config: Html5QrcodeCameraScanConfig = {
-			fps: 250,
-			qrbox: (width, height) => ({ width: Math.min(width, 250), height: Math.min(height, 250) })
+			fps: 250
 		};
 
 		try {
@@ -148,9 +146,11 @@
 		{/if}
 		<Button on:click={onStopClick}>Stop scanning!</Button>
 	{:else if state === 'RESULT'}
-		<Headline>Successfully scanned all QR codes!</Headline>
-		<textarea bind:value={restoredData} />
-		<Button on:click={onResetClick}>Reset scanning</Button>
+		<SuccessView>
+			<Headline>Here is the restored data:</Headline>
+			<Textarea bind:value={restoredData} grow />
+			<Button on:click={onResetClick}>Reset scanning</Button>
+		</SuccessView>
 	{:else if state === 'STOPPED'}
 		<Button on:click={onStartClick}>Continue scanning</Button>
 		<Button on:click={onResetClick}>Reset scanning</Button>
@@ -160,6 +160,10 @@
 </PageWithNavigation>
 
 <style>
+	Textarea {
+		flex-grow: 1;
+	}
+
 	.reader {
 		max-height: 500px;
 		max-width: 500px;

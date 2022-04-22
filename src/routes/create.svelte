@@ -2,6 +2,7 @@
 	import PageWithNavigation from '$lib/PageWithNavigation/PageWithNavigation.svelte';
 	import Qrcode from '$lib/Qrcode/Qrcode.svelte';
 	import QrcodeChunks from '$lib/QrcodeChunks/QrcodeChunks.svelte';
+	import Textarea from '$lib/Textarea/Textarea.svelte';
 
 	let data: string;
 	let error: string = null;
@@ -12,7 +13,7 @@
 	<p>This is where we can create QR codes.</p>
 
 	<p>Put your data in here:</p>
-	<textarea bind:value={data} />
+	<Textarea bind:value={data} />
 
 	{#if error}
 		<p>Error!</p>
