@@ -3,6 +3,7 @@
 	import { writable } from 'svelte/store';
 
 	export let textToCopy: string;
+	export let errorMessage: string = 'Could not copy to clipboard';
 
 	const TIME_TO_READ_NOTICE_IN_MS = 4_000;
 	const state = writable<
@@ -17,9 +18,8 @@
 				$state = { type: 'idle' };
 			}, TIME_TO_READ_NOTICE_IN_MS);
 		} catch (error) {
-			const message = 'Could not copy to clipboard';
+			const message = errorMessage;
 			$state = { type: 'error', message };
-			console.warn(message, error);
 			setTimeout(() => {
 				$state = { type: 'idle' };
 			}, TIME_TO_READ_NOTICE_IN_MS);
