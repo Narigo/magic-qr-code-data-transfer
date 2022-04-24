@@ -8,6 +8,7 @@
 
 <script lang="ts">
 	import Button from '$lib/Button/Button.svelte';
+	import CopyToClipboard from '$lib/CopyToClipboard/CopyToClipboard.svelte';
 	import Headline from '$lib/Headline/Headline.svelte';
 	import PageWithNavigation from '$lib/PageWithNavigation/PageWithNavigation.svelte';
 	import Qrcode from '$lib/Qrcode/Qrcode.svelte';
@@ -151,6 +152,7 @@
 		<SuccessView>
 			<Headline>Here is the restored data:</Headline>
 			<Textarea bind:value={restoredData} grow />
+			<CopyToClipboard textToCopy={restoredData} />
 			<Button on:click={onResetClick}>Reset scanning</Button>
 		</SuccessView>
 	{:else if state === 'STOPPED'}
