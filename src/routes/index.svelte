@@ -1,6 +1,6 @@
 <script lang="ts">
 	import Headline from '$lib/Headline/Headline.svelte';
-import PageWithNavigation from '$lib/PageWithNavigation/PageWithNavigation.svelte';
+	import PageWithNavigation from '$lib/PageWithNavigation/PageWithNavigation.svelte';
 </script>
 
 <PageWithNavigation>
@@ -16,11 +16,12 @@ import PageWithNavigation from '$lib/PageWithNavigation/PageWithNavigation.svelt
 			only be of length X-bytes)
 		</li>
 		<li>
-			It creates individual QR codes based of the chunks, having something like <code
+			It creates individual QR codes based of the chunks, having a prefix like <code
 				>MQR&lt;index&gt;.&lt;length&gt;.&lt;data-of-chunk&gt;</code
 			>
 		</li>
 	</ol>
+
 	<p>On the receiver:</p>
 	<ol>
 		<li>

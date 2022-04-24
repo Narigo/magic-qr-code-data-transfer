@@ -21,7 +21,7 @@
 	let state: 'ERROR' | 'INIT' | 'RESULT' | 'SCANNING' | 'STOPPED' = 'INIT';
 
 	let error: string = null;
-	let restoredData: string = '';
+	let restoredData = '';
 	let qrcodesData = writable<{ [prefix: string]: string }>({});
 
 	let html5QrcodeScanner: Html5Qrcode;
@@ -64,10 +64,12 @@
 					}
 					return 1;
 				});
-				restoredData = results.reduce((acc, [_prefix, data]) => acc + data, '');
+				restoredData = results.reduce((acc, [, data]) => acc + data, '');
 			}
 		};
-		const qrCodeErrorCallback = (_message, _error) => {};
+		const qrCodeErrorCallback = () => {
+			/* ignore errors */
+		};
 		const config: Html5QrcodeCameraScanConfig = {
 			fps: 250
 		};
@@ -160,10 +162,6 @@
 </PageWithNavigation>
 
 <style>
-	Textarea {
-		flex-grow: 1;
-	}
-
 	.reader {
 		max-height: 500px;
 		max-width: 500px;

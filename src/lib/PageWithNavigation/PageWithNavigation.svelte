@@ -10,7 +10,10 @@
 		<slot />
 	</main>
 
-	<footer>(c) 2022 Jörn Bernhardt</footer>
+	<footer>
+		<div>(c) 2022 Jörn Bernhardt.</div>
+		<div><a href="/">Back to index</a></div>
+	</footer>
 </div>
 
 <style>
@@ -42,7 +45,7 @@
 		margin: 0;
 		padding: 0;
 	}
-	a {
+	li > a {
 		display: block;
 		padding: 1em;
 	}
@@ -51,7 +54,12 @@
 		background-color: #333;
 		color: #fff;
 		display: flex;
+		gap: 1em;
 		justify-content: center;
 		padding: 1em;
+	}
+
+	footer a {
+		color: #ccc;
 	}
 </style>

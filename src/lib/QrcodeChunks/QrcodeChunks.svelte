@@ -22,7 +22,7 @@
 		}
 	}
 
-	function createChunks(data: string = ''): Result<string[]> {
+	function createChunks(data = ''): Result<string[]> {
 		const wholeLength = data.length;
 		const howManyParts = Math.ceil(wholeLength / maxChunkLength);
 		if (howManyParts > 100) {

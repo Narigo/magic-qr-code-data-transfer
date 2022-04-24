@@ -1,6 +1,6 @@
 <script lang="ts">
 	export let value: string;
-	export let grow: boolean = false;
+	export let grow = false;
 </script>
 
 <textarea bind:value class:grow />
