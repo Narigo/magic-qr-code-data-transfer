@@ -18,14 +18,14 @@ runs:
       run: corepack enable
       shell: bash
     - name: Install dependencies with pnpm
-      if: ${{ inputs.use-hoisted }} != true
+      if: ${{ inputs.use-hoisted != true }}
       run: pnpm install
       shell: bash
     - name: Install dependencies with pnpm --shamefully-hoist
-      if: ${{ inputs.use-hoisted }} == true
+      if: ${{ inputs.use-hoisted == true }}
       run: pnpm install --shamefully-hoist
       shell: bash
     - name: Install playwright
-      if: ${{ inputs.use-playwright }} != true
-      run: pnpx playwright install --use-deps
+      if: ${{ inputs.use-playwright == true }}
+      run: pnpx playwright install --with-deps
       shell: bash
