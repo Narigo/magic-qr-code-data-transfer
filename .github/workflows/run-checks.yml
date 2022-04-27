@@ -6,8 +6,6 @@ jobs:
   checks:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout 🛎
-        uses: actions/checkout@v3
       - name: Prepare node and pnpm
         uses: ./.github/actions/setup-node-with-pnpm
         with:
@@ -28,8 +26,6 @@ jobs:
   integration-app:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout 🛎
-        uses: actions/checkout@v3
       - name: Prepare node and pnpm
         uses: ./.github/actions/setup-node-with-pnpm
         with:
@@ -43,8 +39,6 @@ jobs:
   integration-storybook:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout 🛎
-        uses: actions/checkout@v3
       - name: Prepare node and pnpm
         uses: ./.github/actions/setup-node-with-pnpm
         with:
