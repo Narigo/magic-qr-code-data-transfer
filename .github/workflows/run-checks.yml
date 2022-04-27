@@ -76,7 +76,7 @@ jobs:
 
       - name: Install Playwright packages 📦
         run: |
-          pnpx playwright install --with-deps
+          npx playwright install --with-deps
 
   integration-app:
     runs-on: ubuntu-latest
@@ -100,7 +100,7 @@ jobs:
 
       - name: Install Playwright packages 📦
         run: |
-          pnpx playwright install --with-deps
+          npx playwright install --with-deps
 
       - name: Run integration tests 🏘
         run: |
@@ -128,7 +128,7 @@ jobs:
 
       - name: Install Playwright packages 📦
         run: |
-          pnpx playwright install --with-deps
+          npx playwright install --with-deps
 
       - name: Run component tests 🏠
         run: |
