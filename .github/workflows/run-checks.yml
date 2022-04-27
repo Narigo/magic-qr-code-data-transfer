@@ -9,7 +9,7 @@ jobs:
       - name: Checkout 🛎
         uses: actions/checkout@v3
       - name: Prepare node and pnpm
-        uses: ./.github/actions/setup-node-with-pnpm.yml
+        uses: ./.github/actions/setup-node-with-pnpm
         with:
           use-hoisted: true
 
@@ -31,7 +31,7 @@ jobs:
       - name: Checkout 🛎
         uses: actions/checkout@v3
       - name: Prepare node and pnpm
-        uses: ./.github/actions/setup-node-with-pnpm.yml
+        uses: ./.github/actions/setup-node-with-pnpm
         with:
           use-hoisted: true
           use-playwright: true
@@ -46,7 +46,7 @@ jobs:
       - name: Checkout 🛎
         uses: actions/checkout@v3
       - name: Prepare node and pnpm
-        uses: ./.github/actions/setup-node-with-pnpm.yml
+        uses: ./.github/actions/setup-node-with-pnpm
         with:
           use-hoisted: true
           use-playwright: true
