@@ -17,13 +17,13 @@ runs:
       shell: bash
     - name: Install dependencies with pnpm
       if: ${{ inputs.use-hoisted != 'true' }}
-      run: pnpm install
+      run: pnpm install --frozen-lockfile
       shell: bash
     - name: Install dependencies with pnpm --shamefully-hoist
       if: ${{ inputs.use-hoisted == 'true' }}
-      run: pnpm install --shamefully-hoist
+      run: pnpm install --frozen-lockfile --shamefully-hoist
       shell: bash
     - name: Install playwright
       if: ${{ inputs.use-playwright == 'true' }}
-      run: pnpx playwright install --with-deps chromium
+      run: playwright install --with-deps chromium
       shell: bash
