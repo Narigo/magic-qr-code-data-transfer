@@ -25,5 +25,5 @@ runs:
       shell: bash
     - name: Install playwright
       if: ${{ inputs.use-playwright == 'true' }}
-      run: pnpx playwright install --with-deps chromium
+      run: npx playwright install chromium --with-deps
       shell: bash
