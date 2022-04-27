@@ -19,6 +19,7 @@ jobs:
 
       - name: Install pnpm packages 📦
         run: |
+          corepack enable
           pnpm install
 
   checks:
@@ -38,6 +39,7 @@ jobs:
 
       - name: Install pnpm packages 📦
         run: |
+          corepack enable
           pnpm install
 
       - name: Run svelte-check 🔬
@@ -69,6 +71,7 @@ jobs:
 
       - name: Install pnpm packages 📦
         run: |
+          corepack enable
           pnpm install
 
       - name: Use cache for Playwright 🎁
@@ -101,6 +104,7 @@ jobs:
 
       - name: Install pnpm packages 📦
         run: |
+          corepack enable
           pnpm install
 
       - name: Use cache for Playwright 🎁
@@ -137,6 +141,7 @@ jobs:
 
       - name: Install pnpm packages 📦
         run: |
+          corepack enable
           pnpm install
 
       - name: Use cache for Playwright 🎁
