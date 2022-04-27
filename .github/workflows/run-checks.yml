@@ -20,7 +20,7 @@ jobs:
       - name: Install pnpm packages 📦
         run: |
           corepack enable
-          pnpm install
+          pnpm install --shamefully-hoist
 
   checks:
     runs-on: ubuntu-latest
@@ -40,7 +40,7 @@ jobs:
       - name: Install pnpm packages 📦
         run: |
           corepack enable
-          pnpm install
+          pnpm install --shamefully-hoist
 
       - name: Run svelte-check 🔬
         run: |
@@ -72,7 +72,7 @@ jobs:
       - name: Install pnpm packages 📦
         run: |
           corepack enable
-          pnpm install
+          pnpm install --shamefully-hoist
 
       - name: Use cache for Playwright 🎁
         id: cache-playwright
@@ -105,7 +105,7 @@ jobs:
       - name: Install pnpm packages 📦
         run: |
           corepack enable
-          pnpm install
+          pnpm install --shamefully-hoist
 
       - name: Use cache for Playwright 🎁
         id: cache-playwright
@@ -142,7 +142,7 @@ jobs:
       - name: Install pnpm packages 📦
         run: |
           corepack enable
-          pnpm install
+          pnpm install --shamefully-hoist
 
       - name: Use cache for Playwright 🎁
         id: cache-playwright
