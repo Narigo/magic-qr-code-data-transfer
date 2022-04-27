@@ -155,7 +155,7 @@ jobs:
       - name: Install Playwright packages 📦
         if: steps.cache-playwright.outputs.cache-hit != 'true'
         run: |
-          pnpx playwright install --with-deps
+          pnpx --shamefully-hoist playwright install --with-deps
 
       - name: Run component tests 🏠
         run: |
