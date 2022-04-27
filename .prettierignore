@@ -1,1 +1,9 @@
-.pnpm-lock.yaml
+.DS_Store
+node_modules
+/build
+/.svelte-kit
+/package
+.pnpm-store
+
+# extras for prettier
+pnpm-lock.yaml
