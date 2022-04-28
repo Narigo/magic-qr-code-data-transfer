@@ -1,0 +1,29 @@
+name: 'setup-node-with-pnpm'
+description: 'Sets up node with pnpm and installs playwright based on necessity'
+inputs:
+  use-hoisted:
+    description: 'Determine whether to install with --shamefully-hoist or not'
+    required: false
+    default: false
+  use-playwright:
+    description: 'Determine whether to install playwright or not'
+    required: false
+    default: false
+runs:
+  using: 'composite'
+  steps:
+    - name: Enable corepack
+      run: corepack enable
+      shell: bash
+    - name: Install dependencies with pnpm
+      if: ${{ inputs.use-hoisted != 'true' }}
+      run: pnpm install --frozen-lockfile
+      shell: bash
+    - name: Install dependencies with pnpm --shamefully-hoist
+      if: ${{ inputs.use-hoisted == 'true' }}
+      run: pnpm install --frozen-lockfile --shamefully-hoist
+      shell: bash
+    - name: Install playwright
+      if: ${{ inputs.use-playwright == 'true' }}
+      run: npx playwright install chromium --with-deps
+      shell: bash

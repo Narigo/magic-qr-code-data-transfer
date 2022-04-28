@@ -2,11 +2,15 @@ version: '3.8'
 
 volumes:
   node-cache:
-  npm-cache:
+  pnpm-cache:
 
 services:
   app:
-    image: node:16
+    build:
+      args:
+        - BASE_IMAGE=node:16
+      context: ./
+      dockerfile: ./Dockerfile
     working_dir: /app
     ports:
       - '3000:3000'
@@ -15,4 +19,4 @@ services:
     volumes:
       - .:/app
       - node-cache:/root/.cache
-      - npm-cache:/root/.npm
+      - pnpm-cache:/root/.pnpm-store
