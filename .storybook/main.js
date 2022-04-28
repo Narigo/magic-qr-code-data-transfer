@@ -12,6 +12,7 @@ module.exports = {
 	async viteFinal(config, { configType }) {
 		const path = require('path');
 
+		config.resolve.dedupe = ['@storybook/client-api'];
 		config.resolve.alias = [
 			{ find: '$lib', replacement: path.resolve('./src/lib') },
 			{ find: '$app', replacement: path.resolve('node_modules/@sveltejs/kit/assets/app') }

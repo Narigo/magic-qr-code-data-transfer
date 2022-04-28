@@ -1,5 +1,5 @@
 <script lang="ts">
-	import QRCode from 'qrcode';
+	import * as QRCode from 'qrcode';
 
 	export let value: string;
 
