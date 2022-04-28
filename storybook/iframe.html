@@ -354,11 +354,27 @@
   };
 </script>
 
-    
-    <script type="module" crossorigin src="/storybook/assets/iframe.8be16a3e.js"></script>
-    <link rel="modulepreload" href="/storybook/assets/vendor.4ba8abbf.js">
-    <link rel="stylesheet" href="/storybook/assets/iframe.955f57e4.css">
-  </head>
+    <script type="module" crossorigin src="/storybook/assets/iframe.38cc4e8f.js"></script>
+    <link rel="stylesheet" href="/storybook/assets/iframe.7e8810f4.css">
+  <style>
+    .sb-show-preparing-story:not(.sb-show-main) > :not(.sb-preparing-story) {
+      display: none;
+    }
+    .sb-show-preparing-docs:not(.sb-show-main) > :not(.sb-preparing-docs) {
+      display: none;
+    }
+    :not(.sb-show-preparing-story) > .sb-preparing-story,
+    :not(.sb-show-preparing-docs) > .sb-preparing-docs,
+    :not(.sb-show-nopreview) > .sb-nopreview,
+    :not(.sb-show-errordisplay) > .sb-errordisplay {
+      display: none;
+    }
+    #root[hidden],
+    #docs-root[hidden] {
+      display: none !important;
+    }
+  </style>
+</head>
   <body>
     <div class="sb-preparing-story sb-wrapper">
   <div class="sb-loader"></div>
@@ -450,7 +466,6 @@
 
     <div id="root"></div>
     <div id="docs-root"></div>
-
     
   </body>
 </html>
