@@ -1,11 +1,12 @@
 {
   ".svelte-kit/runtime/client/start.js": {
-    "file": "start-151ada93.js",
+    "file": "start-cd64a7c5.js",
     "src": ".svelte-kit/runtime/client/start.js",
     "isEntry": true,
     "imports": [
-      "_index-96fb59e9.js",
-      "_index-221906ed.js"
+      "_index-8fd04ea5.js",
+      "_index-c87edf06.js",
+      "_paths-396f020f.js"
     ],
     "dynamicImports": [
       "src/routes/__layout.svelte",
@@ -16,98 +17,102 @@
     ]
   },
   "src/routes/__layout.svelte": {
-    "file": "pages/__layout.svelte-8de33fba.js",
+    "file": "pages/__layout.svelte-a9636821.js",
     "src": "src/routes/__layout.svelte",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
-      "_index-96fb59e9.js"
+      "_index-8fd04ea5.js"
     ],
     "css": [
       "assets/pages/__layout.svelte-142211d1.css"
     ]
   },
   ".svelte-kit/runtime/components/error.svelte": {
-    "file": "error.svelte-c454891e.js",
+    "file": "error.svelte-f339fd52.js",
     "src": ".svelte-kit/runtime/components/error.svelte",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
-      "_index-96fb59e9.js"
+      "_index-8fd04ea5.js"
     ]
   },
   "src/routes/create.svelte": {
-    "file": "pages/create.svelte-cee251a2.js",
+    "file": "pages/create.svelte-5e992fdc.js",
     "src": "src/routes/create.svelte",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
-      "_index-96fb59e9.js",
-      "_PageWithNavigation-8ec7f20c.js",
-      "_Textarea-8aa7c5bd.js"
+      "_index-8fd04ea5.js",
+      "_PageWithNavigation-d800f4b0.js",
+      "_Textarea-2338afab.js",
+      "_paths-396f020f.js"
     ],
     "css": [
-      "assets/pages/create.svelte-a51802a2.css"
+      "assets/pages/create.svelte-832c2d94.css"
     ]
   },
   "src/routes/index.svelte": {
-    "file": "pages/index.svelte-3be256e9.js",
+    "file": "pages/index.svelte-aa065c10.js",
     "src": "src/routes/index.svelte",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
-      "_index-96fb59e9.js",
-      "_Headline-aaade60b.js",
-      "_PageWithNavigation-8ec7f20c.js"
+      "_index-8fd04ea5.js",
+      "_Headline-33e94139.js",
+      "_PageWithNavigation-d800f4b0.js"
     ]
   },
   "src/routes/read.svelte": {
-    "file": "pages/read.svelte-4d0f3b90.js",
+    "file": "pages/read.svelte-34ae53d7.js",
     "src": "src/routes/read.svelte",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
-      "_index-96fb59e9.js",
-      "_index-221906ed.js",
-      "_Headline-aaade60b.js",
-      "_PageWithNavigation-8ec7f20c.js",
-      "_Textarea-8aa7c5bd.js"
+      "_index-8fd04ea5.js",
+      "_index-c87edf06.js",
+      "_Headline-33e94139.js",
+      "_PageWithNavigation-d800f4b0.js",
+      "_Textarea-2338afab.js"
     ],
     "css": [
       "assets/pages/read.svelte-141d41f4.css"
     ]
   },
-  "_index-96fb59e9.js": {
-    "file": "chunks/index-96fb59e9.js"
+  "_index-8fd04ea5.js": {
+    "file": "chunks/index-8fd04ea5.js"
   },
-  "_index-221906ed.js": {
-    "file": "chunks/index-221906ed.js",
+  "_index-c87edf06.js": {
+    "file": "chunks/index-c87edf06.js",
     "imports": [
-      "_index-96fb59e9.js"
+      "_index-8fd04ea5.js"
     ]
   },
-  "_PageWithNavigation-8ec7f20c.js": {
-    "file": "chunks/PageWithNavigation-8ec7f20c.js",
+  "_paths-396f020f.js": {
+    "file": "chunks/paths-396f020f.js"
+  },
+  "_PageWithNavigation-d800f4b0.js": {
+    "file": "chunks/PageWithNavigation-d800f4b0.js",
     "imports": [
-      "_index-96fb59e9.js"
+      "_index-8fd04ea5.js"
     ],
     "css": [
       "assets/PageWithNavigation-9cac052d.css"
     ]
   },
-  "_Textarea-8aa7c5bd.js": {
-    "file": "chunks/Textarea-8aa7c5bd.js",
+  "_Textarea-2338afab.js": {
+    "file": "chunks/Textarea-2338afab.js",
     "imports": [
-      "_index-96fb59e9.js"
+      "_index-8fd04ea5.js"
     ],
     "css": [
       "assets/Textarea-c861db15.css"
     ]
   },
-  "_Headline-aaade60b.js": {
-    "file": "chunks/Headline-aaade60b.js",
+  "_Headline-33e94139.js": {
+    "file": "chunks/Headline-33e94139.js",
     "imports": [
-      "_index-96fb59e9.js"
+      "_index-8fd04ea5.js"
     ],
     "css": [
       "assets/Headline-9f44be58.css"
