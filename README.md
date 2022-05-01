@@ -9,6 +9,7 @@ This web-app lets you create QR codes for longer texts that you can then scan fr
 It will not send any data to the server, the app only manages the creation of QR codes by splitting it into chunks. The same app can be used to retrieve these QR codes and put the information back together. As soon as you have opened the web-page, it will work without using the internet.
 
 Workflow:
+
 1. Go to the Magic QR Code Data Transfer page on the device where you want to send something (the sender). 👩‍💻
 2. Input all the text you want to send to the receiving device. ⌨️
 3. Go to the Magic QR Code Data Transfer page on the device that you want to get the data to (the receiver). 👨‍💻
