@@ -9,8 +9,7 @@ services:
       args:
         - BASE_IMAGE=mcr.microsoft.com/playwright:focal
       context: ./
-      dockerfile: ./Dockerfile
-    entrypoint: bash
+      dockerfile: ./integration/Dockerfile.playwright
     environment:
       - DISPLAY
     working_dir: /app

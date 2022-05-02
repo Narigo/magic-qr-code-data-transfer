@@ -6,6 +6,7 @@ RUN corepack enable
 RUN corepack prepare pnpm@7.0.0 --activate
 
 WORKDIR /app
+RUN pnpx playwright install
 
 COPY package.json pnpm-lock.yaml /app/
 RUN pnpm install

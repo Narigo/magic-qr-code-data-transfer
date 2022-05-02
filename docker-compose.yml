@@ -12,6 +12,7 @@ services:
       context: ./
       dockerfile: ./Dockerfile
     working_dir: /app
+    command: pnpm run dev:server --host
     ports:
       - '3000:3000'
       - '3001:3001'
