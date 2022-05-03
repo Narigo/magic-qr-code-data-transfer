@@ -10,6 +10,9 @@ services:
         - BASE_IMAGE=mcr.microsoft.com/playwright:focal
       context: ./
       dockerfile: ./integration/Dockerfile.playwright
+    command: 'pnpm ci:test'
+    stdin_open: true
+    tty: true
     environment:
       - DISPLAY
     working_dir: /app
