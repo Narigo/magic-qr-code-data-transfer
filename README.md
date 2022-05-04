@@ -36,4 +36,4 @@ If you want to run all tests (with end-to-end tests), you can run the following 
 docker-compose -f docker-compose.yml -f integration/docker-compose.playwright.yml run app pnpm run ci:test
 ```
 
-If you want to use playwright for live end-to-end testing, an X server is necessary. There is a script for Mac called `playwright.sh` that can be used to open XQuartz (needs to be installed on the machine) and open a bash that allows running playwright through the npm scripts.
+If you want to use playwright for live end-to-end testing, an X server is necessary. There is a script for Mac called `playwright.sh` that can be used to open XQuartz (needs to be installed on the machine) and opens a bash that allows running playwright through the npm scripts.

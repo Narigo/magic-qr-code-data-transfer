@@ -1,5 +1,3 @@
-version: '3.8'
-
 volumes:
   playwright:
 
@@ -10,7 +8,8 @@ services:
         - BASE_IMAGE=mcr.microsoft.com/playwright:focal
       context: ./
       dockerfile: ./integration/Dockerfile.playwright
-    command: 'pnpm ci:test'
+    container_name: magic-qr-playwright
+    command: ''
     stdin_open: true
     tty: true
     environment:

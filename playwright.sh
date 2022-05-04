@@ -5,4 +5,8 @@ open -a XQuartz
 IP=$(ipconfig getifaddr en0)
 /usr/X11/bin/xhost + $IP
 
-DISPLAY=${IP}:0 docker compose -f docker-compose.yml -f integration/docker-compose.playwright.yml up --build
+DISPLAY=${IP}:0 docker compose -f docker-compose.yml -f integration/docker-compose.playwright.yml up --build --detach
+
+DISPLAY=${IP}:0 docker attach magic-qr-playwright
+
+docker container rm magic-qr-playwright
