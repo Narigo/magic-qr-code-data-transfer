@@ -4,9 +4,32 @@
 	import QrcodeChunks from '$lib/QrcodeChunks/QrcodeChunks.svelte';
 	import ShowQrcodeToReader from '$lib/ShowQrcodeToReader/ShowQrcodeToReader.svelte';
 	import Textarea from '$lib/Textarea/Textarea.svelte';
+	import { writable } from 'svelte/store';
 
 	let data: string;
 	let error: string = null;
+	let infoMessage = writable('');
+
+	const checkDrag: svelte.JSX.DragEventHandler<HTMLTextAreaElement> = (e) => {
+		e.preventDefault();
+		$infoMessage = JSON.stringify(e.detail);
+	};
+
+	const onLeave: svelte.JSX.DragEventHandler<HTMLTextAreaElement> = (e) => {
+		e.preventDefault();
+		$infoMessage = '';
+	};
+
+	const onDrop: svelte.JSX.DragEventHandler<HTMLTextAreaElement> = async (e) => {
+		e.preventDefault();
+		$infoMessage = '';
+		for (const item of e.dataTransfer.files) {
+			$infoMessage += `| ${item.name} `;
+		}
+		for (const item of e.dataTransfer.items) {
+			$infoMessage += `| ${item.kind}: ${item.type} `;
+		}
+	};
 </script>
 
 <PageWithNavigation>
@@ -16,14 +39,15 @@
 	<ShowQrcodeToReader />
 
 	<p>Put your data in here:</p>
-	<Textarea bind:value={data} />
+	<Textarea bind:value={data} on:dragover={checkDrag} on:dragleave={onLeave} on:drop={onDrop} />
+	{#if $infoMessage}<p>{$infoMessage}</p>{/if}
 
 	{#if error}
 		<section>
 			<p>Error!</p>
 			<p>{error}</p>
 		</section>
-	{:else if data !== ''}
+	{:else if data && data !== ''}
 		<section>
 			<p>The chunks are:</p>
 			<QrcodeChunks {data} let:chunks>

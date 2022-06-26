@@ -3,7 +3,7 @@
 	export let grow = false;
 </script>
 
-<textarea bind:value class:grow />
+<textarea bind:value class:grow on:drop on:dragover on:dragleave />
 
 <style>
 	textarea {
