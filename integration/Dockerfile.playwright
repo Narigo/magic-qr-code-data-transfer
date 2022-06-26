@@ -8,6 +8,6 @@ COPY package.json pnpm-lock.yaml /app/
 RUN --mount=type=cache,target=/root/.local/share/pnpm/store \
     pnpm install
 RUN --mount=type=cache,target=/root/.local/share/pnpm/store \
-    pnpx playwright install
+    npx playwright install
 
 ENTRYPOINT [ "/bin/bash" ]
