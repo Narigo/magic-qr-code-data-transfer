@@ -30,7 +30,7 @@ To run the development server for the application, you can run:
 docker-compose up
 ```
 
-If you want to run all tests (with end-to-end tests), you can run the following command that :
+If you want to run all tests (with end-to-end tests), you can run the following command that should work when opening the container:
 
 ```
 docker-compose -f docker-compose.yml -f integration/docker-compose.playwright.yml run app pnpm run ci:test
