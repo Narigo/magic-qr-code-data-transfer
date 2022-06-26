@@ -1,5 +1,3 @@
-version: '3.8'
-
 volumes:
   playwright:
 
@@ -9,8 +7,11 @@ services:
       args:
         - BASE_IMAGE=mcr.microsoft.com/playwright:focal
       context: ./
-      dockerfile: ./Dockerfile
-    entrypoint: bash
+      dockerfile: ./integration/Dockerfile.playwright
+    container_name: magic-qr-playwright
+    command: ''
+    stdin_open: true
+    tty: true
     environment:
       - DISPLAY
     working_dir: /app
