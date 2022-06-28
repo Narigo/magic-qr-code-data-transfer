@@ -24,10 +24,7 @@
 		e.preventDefault();
 		$infoMessage = '';
 		for (const item of e.dataTransfer.files) {
-			$infoMessage += `| ${item.name} `;
-		}
-		for (const item of e.dataTransfer.items) {
-			$infoMessage += `| ${item.kind}: ${item.type} `;
+			data = await item.text();
 		}
 	};
 </script>
