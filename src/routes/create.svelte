@@ -22,6 +22,13 @@
 
 	const onDrop: svelte.JSX.DragEventHandler<HTMLTextAreaElement> = async (e) => {
 		e.preventDefault();
+		e.stopPropagation();
+		if (
+			data.trim() !== '' &&
+			!confirm('Do you really want to overwrite what you have in your data?')
+		) {
+			return;
+		}
 		$infoMessage = '';
 		for (const item of e.dataTransfer.files) {
 			data = await item.text();
