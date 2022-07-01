@@ -2,10 +2,14 @@
 	export let value: string;
 	export let grow = false;
 
+	const calculateHeight = (node) => {
+		node.setAttribute('style', `height: 0px;`);
+		node.setAttribute('style', `height: ${node.scrollHeight}px;`);
+	};
+
 	const inputChangeHandler: svelte.JSX.KeyboardEventHandler<HTMLTextAreaElement> = (e) => {
 		e.preventDefault();
-		e.currentTarget.setAttribute('style', `height: 0px;`);
-		e.currentTarget.setAttribute('style', `height: ${e.currentTarget.scrollHeight}px;`);
+		calculateHeight(e.currentTarget);
 	};
 </script>
 
