@@ -1,6 +1,10 @@
 <script lang="ts">
+	import { createEventDispatcher } from 'svelte';
+
 	export let value: string;
 	export let grow = false;
+
+	const dispatch = createEventDispatcher<{ fileDrop: DataTransfer }>();
 
 	const calculateHeight = (node) => {
 		node.setAttribute('style', `height: 0px;`);
@@ -11,9 +15,21 @@
 		e.preventDefault();
 		calculateHeight(e.currentTarget);
 	};
+
+	const dropHandler: svelte.JSX.DragEventHandler<HTMLTextAreaElement> = (e) => {
+		e.preventDefault();
+		dispatch('fileDrop', e.dataTransfer);
+	};
 </script>
 
-<textarea on:input={inputChangeHandler} bind:value class:grow on:drop on:dragover on:dragleave />
+<textarea
+	on:input={inputChangeHandler}
+	bind:value
+	class:grow
+	on:drop={dropHandler}
+	on:dragover
+	on:dragleave
+/>
 
 <style>
 	textarea {

@@ -6,7 +6,7 @@
 	import Textarea from '$lib/Textarea/Textarea.svelte';
 	import { writable } from 'svelte/store';
 
-	let data: string;
+	let data: string = '';
 	let error: string = null;
 	let infoMessage = writable('');
 
@@ -20,9 +20,7 @@
 		$infoMessage = '';
 	};
 
-	const onDrop: svelte.JSX.DragEventHandler<HTMLTextAreaElement> = async (e) => {
-		e.preventDefault();
-		e.stopPropagation();
+	const onFileDrop = async (e: CustomEvent<DataTransfer>) => {
 		if (
 			data.trim() !== '' &&
 			!confirm('Do you really want to overwrite what you have in your data?')
@@ -30,7 +28,8 @@
 			return;
 		}
 		$infoMessage = '';
-		for (const item of e.dataTransfer.files) {
+		console.log({ e });
+		for (const item of e.detail.files) {
 			data = await item.text();
 		}
 	};
@@ -43,7 +42,12 @@
 	<ShowQrcodeToReader />
 
 	<p>Put your data in here:</p>
-	<Textarea bind:value={data} on:dragover={checkDrag} on:dragleave={onLeave} on:drop={onDrop} />
+	<Textarea
+		bind:value={data}
+		on:dragover={checkDrag}
+		on:dragleave={onLeave}
+		on:fileDrop={onFileDrop}
+	/>
 	{#if $infoMessage}<p>{$infoMessage}</p>{/if}
 
 	{#if error}
