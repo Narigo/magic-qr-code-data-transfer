@@ -6,7 +6,7 @@
 	import Textarea from '$lib/Textarea/Textarea.svelte';
 	import { writable } from 'svelte/store';
 
-	let data: string = '';
+	let data = '';
 	let error: string = null;
 	let infoMessage = writable('');
 
