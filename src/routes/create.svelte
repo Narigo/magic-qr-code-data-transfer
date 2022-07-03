@@ -12,7 +12,6 @@
 
 	const checkDrag: svelte.JSX.DragEventHandler<HTMLTextAreaElement> = (e) => {
 		e.preventDefault();
-		$infoMessage = JSON.stringify(e.detail);
 	};
 
 	const onLeave: svelte.JSX.DragEventHandler<HTMLTextAreaElement> = (e) => {
@@ -28,7 +27,6 @@
 			return;
 		}
 		$infoMessage = '';
-		console.log({ e });
 		for (const item of e.detail.files) {
 			data = await item.text();
 		}

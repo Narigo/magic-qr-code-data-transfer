@@ -19,10 +19,14 @@
 	const dropHandler: svelte.JSX.DragEventHandler<HTMLTextAreaElement> = (e) => {
 		e.preventDefault();
 		dispatch('fileDrop', e.dataTransfer);
+
+		const node = e.currentTarget;
+		setTimeout(() => calculateHeight(node), 0);
 	};
 </script>
 
 <textarea
+	on:change={inputChangeHandler}
 	on:input={inputChangeHandler}
 	bind:value
 	class:grow
