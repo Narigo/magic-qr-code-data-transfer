@@ -3,24 +3,31 @@ module.exports = {
 	parser: '@typescript-eslint/parser',
 	extends: [
 		'eslint:recommended',
+		'plugin:svelte/recommended',
 		'plugin:@typescript-eslint/recommended',
 		'prettier',
 		'plugin:storybook/recommended'
 	],
-	plugins: ['svelte3', '@typescript-eslint'],
+	plugins: ['@typescript-eslint', 'svelte'],
 	ignorePatterns: ['*.cjs'],
 	overrides: [
 		{
 			files: ['*.svelte'],
-			processor: 'svelte3/svelte3'
+			globals: {
+				svelte: true
+			},
+			parser: 'svelte-eslint-parser',
+			parserOptions: {
+				parser: {
+					ts: '@typescript-eslint/parser',
+					js: 'espree',
+					typescript: '@typescript-eslint/parser'
+				}
+			}
 		}
 	],
-	settings: {
-		'svelte3/typescript': () => require('typescript')
-	},
 	parserOptions: {
-		sourceType: 'module',
-		ecmaVersion: 2019
+		extraFileExtensions: ['.svelte']
 	},
 	env: {
 		browser: true,
