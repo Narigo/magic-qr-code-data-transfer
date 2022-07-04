@@ -6,7 +6,7 @@
 
 	const dispatch = createEventDispatcher<{ fileDrop: DataTransfer }>();
 
-	const calculateHeight = (node) => {
+	const calculateHeight = (node: HTMLTextAreaElement) => {
 		node.setAttribute('style', `height: 0px;`);
 		node.setAttribute('style', `height: ${node.scrollHeight}px;`);
 	};

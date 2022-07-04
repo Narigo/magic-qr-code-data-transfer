@@ -27,9 +27,11 @@
 			return;
 		}
 		$infoMessage = '';
-		for (const item of e.detail.files) {
-			data = await item.text();
+		let contents = '';
+		for (let i = 0; i < e.detail.files.length; i++) {
+			contents += await e.detail.files.item(i).text();
 		}
+		data = contents;
 	};
 </script>
 
