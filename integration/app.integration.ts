@@ -8,6 +8,12 @@ test('basic test', async ({ page }) => {
 
 test('there is a link to the create page', async ({ page }) => {
 	await page.goto('http://localhost:3000/');
-	const links = await page.locator('a').allTextContents();
-	await expect(links.some((linkText) => /Send data/.test(linkText))).toBe(true);
+	const links = await page.locator('a[href="/create"]').count();
+	await expect(links).toBeGreaterThan(0);
+});
+
+test('there is a link to the read page', async ({ page }) => {
+	await page.goto('http://localhost:3000/');
+	const links = await page.locator('a[href="/read"]').count();
+	await expect(links).toBeGreaterThan(0);
 });
